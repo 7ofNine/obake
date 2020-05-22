@@ -282,7 +282,7 @@ TEST_CASE("mt_overflow_check_test")
                 constexpr auto bw = decltype(b)::value;
 
                 using pm_t = d_packed_monomial<int_t, bw>;
-                [[maybe_unused]] constexpr auto psize = pm_t::psize;
+                constexpr auto psize = pm_t::psize;
 
                 for (auto vs : {3u, 4u, 5u, 6u}) {
                     symbol_set ss;
