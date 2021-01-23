@@ -288,7 +288,9 @@ TEST_CASE("mt_overflow_check_test")
                 std::vector<int_t> tmp(vs);
                 for (auto i = 0u; i < 6000u; ++i) {
                     for (auto j = 0u; j < vs; ++j) {
-                        const auto [lim_min, lim_max] = detail::kpack_get_lims<int_t>(bw);
+                        //const auto [lim_min, lim_max] = detail::kpack_get_lims<int_t>(bw);
+                        const auto &lim_max = detail::kpack_get_lims<int_t>(bw).second;
+                        const auto &lim_min = detail::kpack_get_lims<int_t>(bw).first;
                         tmp[j]
                             = idist(rng, typename std::uniform_int_distribution<int_t>::param_type{lim_min, lim_max});
                     }
@@ -307,12 +309,14 @@ TEST_CASE("mt_overflow_check_test")
 
                 // Add monomials with maximal exponents.
                 for (auto j = 0u; j < vs; ++j) {
-                    const auto [lim_min, lim_max] = detail::kpack_get_lims<int_t>(bw);
+                    //const auto [lim_min, lim_max] = detail::kpack_get_lims<int_t>(bw);
+                    const auto &lim_max = detail::kpack_get_lims<int_t>(bw).second;
                     tmp[j] = lim_max;
                 }
                 v2[0] = pm_t(tmp);
                 for (auto j = 0u; j < vs; ++j) {
-                    const auto [lim_min, lim_max] = detail::kpack_get_lims<int_t>(bw);
+                    //const auto [lim_min, lim_max] = detail::kpack_get_lims<int_t>(bw);
+                    const auto &lim_max = detail::kpack_get_lims<int_t>(bw).second;
                     tmp[j] = lim_max;
                 }
                 v1.emplace_back(tmp);

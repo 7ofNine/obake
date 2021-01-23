@@ -314,8 +314,9 @@ TEST_CASE("compatibility_test")
             }
 
             // Try with values exceeding the encoded limits.
-            const auto [klim_min, klim_max] = detail::kpack_get_klims<int_t>(psize);
-
+            //const auto [klim_min, klim_max] = detail::kpack_get_klims<int_t>(psize);
+            const auto klim_min = detail::kpack_get_klims<int_t>(psize).first;
+            const auto klim_max = detail::kpack_get_klims<int_t>(psize).second;
             pm_t tmp_pm;
 
             if constexpr (is_signed_v<int_t>) {

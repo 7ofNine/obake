@@ -611,7 +611,9 @@ inline auto poly_mul_estimate_product_size(const ::std::vector<T1> &x, const ::s
                     // to the degree.
 
                     // Get the degree data for x and y.
-                    const auto &[v1_deg, v2_deg] = degree_data;
+                    //const auto &[v1_deg, v2_deg] = degree_data;
+                    auto &v1_deg = ::std::get<0>(degree_data);
+                    auto &v2_deg = ::std::get<1>(degree_data);
 
                     for (auto idx1 : range) {
                         // Fetch the degree of the current term in x.
@@ -726,7 +728,9 @@ inline auto poly_mul_estimate_product_size(const ::std::vector<T1> &x, const ::s
                             const auto &max_deg = ::std::get<0>(::std::forward_as_tuple(args...));
 
                             // Get the degree data for x and y.
-                            const auto &[v1_deg, v2_deg] = degree_data;
+                            //const auto &[v1_deg, v2_deg] = degree_data;
+                            auto &v1_deg = ::std::get<0>(degree_data);
+                            auto &v2_deg = ::std::get<1>(degree_data);
 
                             // Fetch the degree of the current term in x.
                             const auto &d1 = v1_deg[idx1];

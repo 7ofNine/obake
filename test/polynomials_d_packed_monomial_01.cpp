@@ -270,7 +270,9 @@ TEST_CASE("range_overflow_check_test")
 
                 // Check overflow now.
                 // Get the limits of the components.
-                const auto [lim_min, lim_max] = detail::kpack_get_lims<int_t>(bw);
+                //const auto [lim_min, lim_max] = detail::kpack_get_lims<int_t>(bw);
+                const auto lim_min = detail::kpack_get_lims<int_t>(bw).first;
+                const auto lim_max = detail::kpack_get_lims<int_t>(bw).second;
                 {
                     if constexpr (is_signed_v<int_t>) {
                         v1.emplace_back(pm_t{int_t(0), lim_min, int_t(4)});
